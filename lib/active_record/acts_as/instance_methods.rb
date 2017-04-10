@@ -82,7 +82,17 @@ module ActiveRecord
       end
 
       def touch(*args)
-        acting_as.touch(*args) if acting_as.persisted?
+        supermodel_args = []
+        submodel_args = []
+        args.each do |arg|
+          if has_attribute?(arg, true)
+            submodel_args << arg
+          else
+            supermodel_args << arg
+          end
+        end
+        super(*submodel_args) if submodel_args.any?
+        acting_as.touch(*supermodel_args) if acting_as.persisted?
       end
 
       def respond_to?(name, include_private = false, as_original_class = false)
