@@ -84,6 +84,7 @@ def initialize_schema
 
     create_table :pens do |t|
       t.string :color
+      t.datetime :pressed_datetime, null: true
       t.integer :pen_collection_id
     end
 

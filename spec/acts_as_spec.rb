@@ -225,6 +225,11 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
         pen.touch(:one, :two)
       end
 
+      it "can touch a submodel attribute" do
+        pen.save!
+        expect { pen.touch(:pressed_datetime) }.to_not raise_error
+      end
+
       it "touches supermodel on save" do
         pen.save
         pen.reload
