@@ -190,6 +190,7 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
           "pen_collection_id": null,
           "settings": {"global_option":"globalvalue", "option1":"value1"},
           "color": "red",
+          "pressed_datetime": null,
           "created_at": ' + pen.created_at.to_json + ',
           "updated_at": ' + pen.updated_at.to_json + '
         }
@@ -223,6 +224,16 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
         pen.save!
         expect(pen.product).to receive(:touch).with(:one, :two)
         pen.touch(:one, :two)
+      end
+
+      it "can touch a submodel attribute without raising error" do
+        pen.save!
+        expect { pen.touch(:pressed_datetime) }.to_not raise_error
+      end
+
+      it "can touch a submodel attribute and change attribute" do
+        pen.save
+        expect{ pen.touch(:pressed_datetime) }.to change { pen.pressed_datetime }
       end
 
       it "touches supermodel on save" do
@@ -348,6 +359,7 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
         "created_at"        => nil,
         "updated_at"        => nil,
         "color"             => "red",
+        "pressed_datetime"  => nil,
         "pen_collection_id" => nil
       )
     end
@@ -355,7 +367,7 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
 
   describe "#attribute_names" do
     it "returns the attribute names of the supermodel and submodel" do
-      expect(pen.attribute_names).to eq(["id", "color", "pen_collection_id", "name", "price", "store_id", "settings", "created_at", "updated_at"])
+      expect(pen.attribute_names).to eq(["id", "color", "pressed_datetime", "pen_collection_id", "name", "price", "store_id", "settings", "created_at", "updated_at"])
     end
   end
 
