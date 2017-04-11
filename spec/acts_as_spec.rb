@@ -366,6 +366,14 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
     end
   end
 
+  describe '#respond.to?' do
+    it 'returns true for instance methods of the supermodel and submodel' do
+      red_pen = Pen.create!(name: 'red pen', price: 0.8, color: 'red')
+      expect(red_pen.respond_to?(:pen_instance_method)).to eq(true)
+      expect(red_pen.respond_to?(:present)).to eq(true)
+    end
+  end
+
   describe ".actables" do
     before(:each) { clear_database }
 
@@ -378,6 +386,25 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
 
       expect(actables).to be_kind_of(ActiveRecord::Relation)
       expect(actables.to_a).to eq([red_pen.acting_as, blue_pen.acting_as])
+    end
+  end
+
+  context 'class methods' do
+    before(:each) { clear_database }
+
+    context 'when the class method returns a scope' do
+      it 'works' do
+        cheap_pen     = Pen.create!(name: 'cheap pen',     price: 0.5, color: 'blue')
+        expensive_pen = Pen.create!(name: 'expensive pen', price: 1,   color: 'red')
+
+        expect(Pen.with_price_higher_than(0.5).to_a).to eq([expensive_pen])
+      end
+    end
+
+    context 'when the class methods returns anything else' do
+      it 'works' do
+        expect(Pen.test_class_method).to eq('test')
+      end
     end
   end
 

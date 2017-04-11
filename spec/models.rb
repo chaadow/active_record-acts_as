@@ -10,6 +10,14 @@ class Product < ActiveRecord::Base
   validates_presence_of :name, :price
   store :settings, accessors: [:global_option]
 
+  def self.with_price_higher_than(price)
+    where('price > ?', price)
+  end
+
+  def self.test_class_method
+    'test'
+  end
+
   def present
     "#{name} - $#{price}"
   end
@@ -35,6 +43,9 @@ class Pen < ActiveRecord::Base
   belongs_to :pen_collection, touch: true
 
   validates_presence_of :color
+
+  def pen_instance_method
+  end
 end
 
 class Buyer < ActiveRecord::Base
