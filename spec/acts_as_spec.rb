@@ -506,7 +506,6 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
   context 'Namespaces' do
     subject { Inventory::PenLid }
     
-    let(:penlid) { Inventory::PenLid.create name: 'steve', price: 10.1, color: 'beige' }
 
     it "has a has_one relation" do
       association = subject.reflect_on_all_associations.find { |r| r.name == :product_feature }
@@ -520,8 +519,11 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
     end
     
     it "can be created" do
-      
-      expect(penlid.exist?).to be_truthy
+      expect(
+        Inventory::PenLid.create name: 'steve', 
+                                 price: 10.1, 
+                                 color: 'beige'
+                                 ).to be_a_kind_of Inventory::PenLid
     end
   end
 
