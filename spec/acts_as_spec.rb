@@ -505,6 +505,7 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
 
   context 'Namespaces' do
     subject { Inventory::PenLid }
+    
 
     it "has a has_one relation" do
       association = subject.reflect_on_all_associations.find { |r| r.name == :product_feature }
@@ -515,6 +516,14 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
 
     it "has a cattr_reader for the acting_as_model" do
       expect(subject.acting_as_model).to eq Inventory::ProductFeature
+    end
+    
+    it "can be created" do
+      expect(
+        Inventory::PenLid.create name: 'steve', 
+                                 price: 10.1, 
+                                 color: 'beige'
+                                 ).to be_a_kind_of Inventory::PenLid
     end
   end
 
