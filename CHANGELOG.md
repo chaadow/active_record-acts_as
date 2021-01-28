@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] -
 
-## [5.0.1] - 2019-01-28
+## [5.0.1] - 2021-01-28
 
 ### Fixed
 - Fixed rails `6.0.x` compatibility for `ActiveRecord::Errors` (@chaadow)
