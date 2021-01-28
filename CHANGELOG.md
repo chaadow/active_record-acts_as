@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] -
 
-## [5.0.0] - 2019-12-29 by @chaadow
+## [5.0.1] - 2019-01-28
+
+### Fixed
+- Fixed rails `6.0.x` compatibility for `ActiveRecord::Errors` (@chaadow)
+
+## [5.0.0] - 2020-12-29 by @chaadow
+
 ### Added
 - Add support for rails 6 and 6.1 while removing rails 4.x and 5.x
   from the travis matrix.
