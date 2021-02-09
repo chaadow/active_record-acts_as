@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Simulate multi-table inheritance for activerecord models}
   spec.description   = %q{Simulate multi-table inheritance for activerecord models using a polymorphic association}
   spec.homepage      = "http://github.com/chaadow/active_record-acts_as"
+  spec.metadata         = { "source_code_uri" => "http://github.com/chaadow/active_record-acts_as" }
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
