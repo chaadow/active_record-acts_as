@@ -23,7 +23,7 @@ module ActiveRecord
         acting_as_model.methods_callable_by_submodel.include?(method) || super
       end
 
-      def method_missing(method, *args, &block)
+      ruby2_keywords def method_missing(method, *args, &block)
         if acting_as_model.methods_callable_by_submodel.include?(method)
           result = acting_as_model.public_send(method, *args, &block)
           if result.is_a?(ActiveRecord::Relation)

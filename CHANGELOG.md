@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] -
 
+### Fixed
+- Handle kwargs in ruby 3 in methods delegated to supermodel.
+
 ## [5.0.1] - 2021-01-28
 
 ### Fixed

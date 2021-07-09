@@ -157,6 +157,10 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
       expect(pen.present).to eq("pen - $0.8")
     end
 
+    it "responds to supermodel methods with keyword arguments" do
+      expect(pen.keyword_method(one: 3, two: 4)).to eq [3,4]
+    end
+
     it 'responds to serialized attribute' do
       expect(pen).to respond_to('option1')
       expect(isolated_pen).to respond_to('option2')
@@ -451,6 +455,10 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
       it 'can be called from the submodel' do
         expect(Product.class_method_callable_by_submodel).to eq('class_method_callable_by_submodel')
         expect(Pen.class_method_callable_by_submodel).to eq('class_method_callable_by_submodel')
+      end
+
+      it 'with keyword arguments can be called from the submodel' do
+        expect(Pen.class_keyword_method_callable_by_submodel(one: 3, two: 4)).to eq([3,4])
       end
     end
 
