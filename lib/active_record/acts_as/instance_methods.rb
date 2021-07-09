@@ -117,7 +117,7 @@ module ActiveRecord
         duplicate
       end
 
-      def method_missing(method, *args, &block)
+      ruby2_keywords def method_missing(method, *args, &block)
         if !self_respond_to?(method) && acting_as.respond_to?(method)
           acting_as.send(method, *args, &block)
         else

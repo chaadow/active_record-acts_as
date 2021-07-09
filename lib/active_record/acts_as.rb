@@ -1,3 +1,4 @@
+require 'ruby2_keywords'
 require 'active_support'
 require 'active_record'
 require 'active_record/acts_as/version'
