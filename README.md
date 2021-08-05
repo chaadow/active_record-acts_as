@@ -129,6 +129,12 @@ Pen.first.acting_as
   # => #<Product ...>
 ```
 
+Likewise, `actables` converts a relation of specific objects to their parent objects:
+```ruby
+Pen.where(...).actables
+# => [#<Product ...>, ...]
+```
+
 In `has_many` case you can use subclasses:
 
 ```Ruby
@@ -174,7 +180,7 @@ Make sure you know what you are doing when overwriting `polymorphic` option.
 
 If your `actable` and `acts_as` models are namespaced, you need to configure them like this:
 
-```
+```Ruby
 class MyApp::Product < ApplicationRecord
   actable inverse_of: :product
 end
