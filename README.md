@@ -1,5 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/active_record-acts_as.svg)](http://badge.fury.io/rb/active_record-acts_as)
-[![Build Status](https://travis-ci.org/chaadow/active_record-acts_as.svg)](https://travis-ci.org/chaadow/active_record-acts_as)
+![Build Status](https://github.com/chaadow/active_record-acts_as/actions/workflows/ruby.yml/badge.svg)
 
 # ActiveRecord::ActsAs
 
@@ -21,8 +21,6 @@ a separate table for each product type, i.e. a `pens` table with `color` column.
 * Ruby >= `2.5`
 * ActiveSupport >= `6.0`
 * ActiveRecord >= `6.0`
-* Regarding ActiveRecord `5.2.x` please use version `4.0.3` of this gem. If you encounter any bug you can open an issue.
-Maintenance will be stopped after the release of ActiveRecord `6.2`
 
 ## Installation
 
@@ -187,14 +185,10 @@ end
 ## Caveats
 
 Multiple `acts_as` in the same class are not supported!
-
-
 ## Migrating from acts_as_relation
 
 Replace `acts_as_superclass` in models with `actable` and if you where using
 `:as_relation_superclass` option on `create_table` remove it and use `t.actable` on column definitions.
-
-
 ## RSpec custom matchers
 
 To use this library custom RSpec matchers, you must require the `rspec/acts_as_matchers` file.

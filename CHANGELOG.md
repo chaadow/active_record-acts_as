@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] -
+- Use Github actions instead of travis.yml
+- Add support for ruby 2.7 3.0 and 3.1
 
 ## [5.0.2] - 2021-07-27
 
