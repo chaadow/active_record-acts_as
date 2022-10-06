@@ -11,3 +11,8 @@ require 'active_record'
 if ActiveRecord::Base.respond_to?(:raise_in_transactional_callbacks=)
   ActiveRecord::Base.raise_in_transactional_callbacks = true
 end
+if ActiveRecord.version > Gem::Version.new('6.2')
+  ActiveRecord.use_yaml_unsafe_load = true
+else
+  ActiveRecord::Base.use_yaml_unsafe_load = true
+end
