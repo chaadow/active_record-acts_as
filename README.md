@@ -1,5 +1,5 @@
-[![Gem Version](https://badge.fury.io/rb/active_record-acts_as.svg)](http://badge.fury.io/rb/active_record-acts_as)
-![Build Status](https://github.com/chaadow/active_record-acts_as/actions/workflows/ruby.yml/badge.svg)
+![Gem](https://img.shields.io/gem/v/active_record-acts_as?style=for-the-badge)
+![Build Status](https://img.shields.io/github/workflow/status/chaadow/active_record-acts_as/Ruby?style=for-the-badge)
 
 # ActiveRecord::ActsAs
 
