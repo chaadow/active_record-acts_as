@@ -1,9 +1,6 @@
+# ActiveRecord::ActsAs
 ![Gem](https://img.shields.io/gem/v/active_record-acts_as?style=for-the-badge)
 ![Build Status](https://img.shields.io/github/workflow/status/chaadow/active_record-acts_as/Ruby?style=for-the-badge)
-
-# ActiveRecord::ActsAs
-
-This is a refactor of [`acts_as_relation`](https://github.com/hzamani/acts_as_relation)
 
 Simulates multiple-table-inheritance (MTI) for ActiveRecord models.
 By default, ActiveRecord only supports single-table inheritance (STI).
