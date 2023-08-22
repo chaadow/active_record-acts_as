@@ -16,7 +16,7 @@ module ActiveRecord
       end
 
       def actables
-        acting_as_model.where(actable_id: select(:id))
+        acting_as_model.where(actable_id: select(:id), actable_type: model_name.name)
       end
 
       def respond_to_missing?(method, include_private = false)
