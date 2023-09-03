@@ -300,25 +300,27 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
     end
 
     context "errors" do
+      let(:error_message) { ActiveRecord.version >=  Gem::Version.new('7.1.0.alpha') ? "can’t be blank" : "can't be blank"}
+
       context 'when validates_actable is set to true' do
         it "combines supermodel and submodel errors" do
           pen = Pen.new
           expect(pen).to be_invalid
           expect(pen.errors.to_hash).to eq(
-            name:  ["can't be blank"],
-            price: ["can't be blank"],
-            color: ["can't be blank"]
+            name:  [error_message],
+            price: [error_message],
+            color: [error_message]
           )
           pen.name = 'testing'
           expect(pen).to be_invalid
           expect(pen.errors.to_hash).to eq(
-            price: ["can't be blank"],
-            color: ["can't be blank"]
+            price: [error_message],
+            color: [error_message]
           )
           pen.color = 'red'
           expect(pen).to be_invalid
           expect(pen.errors.to_hash).to eq(
-            price: ["can't be blank"]
+            price: [error_message]
           )
           pen.price = 0.8
           expect(pen).to be_valid
@@ -329,9 +331,7 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
         it "unless validates_actable is set to false" do
           pen = IsolatedPen.new
           expect(pen).to be_invalid
-          expect(pen.errors.to_hash).to eq(
-            color: ["can't be blank"]
-          )
+          expect(pen.errors.to_hash).to eq( { color: [error_message] })
           pen.color = 'red'
           expect(pen).to be_valid
         end
