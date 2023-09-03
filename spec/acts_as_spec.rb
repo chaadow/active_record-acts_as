@@ -487,6 +487,13 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
       @black_pen.buyers.create! name: 'John'
     end
 
+    describe 'exists?' do
+      it 'checks on both model and supermodel' do
+        expect(Pen.exists?(name: 'red pen')).to be_truthy
+        expect(Pen.exists?(name: 'red pen', price: 0.8)).to be_truthy
+      end
+    end
+
     describe '.where and .where!' do
       it 'respects supermodel attributes' do
         conditions = { price: 0.8 }
