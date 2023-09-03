@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] -
+## [5.2.0] - 2023-09-03
+
+### Added
+- Add `.exists?` support to seamlessly check in both the model and super model
+  (@chaadow)
+
+### Fixed
+- Fix `.actables` to restrict based on type. (@Taeir)
+
 ## [5.1.0] - 2023-06-29
 - Use Github actions instead of travis.yml
 - Add support for ruby 2.7 3.0 and 3.1
