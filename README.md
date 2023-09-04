@@ -95,10 +95,17 @@ Pen.create name: 'Penie!', price: 0.8, color: 'red'
   # => #<Pen id: 1, color: "red">
 Pen.where price: 0.8
   # => [#<Pen id: 1, color: "red">]
+
+# You can seamlessly query Product attributes
 pen = Pen.where(name: 'new pen', color: 'black').first_or_initialize
   # => #<Pen id: nil, color: "black">
 pen.name
   # => "new pen"
+
+# You can also call `exists?` using Product attributes:
+Pen.exists?(name: 'Penie!', price: 0.8)
+  # => true
+
 Product.where price: 0.8
   # => [#<Product id: 1, name: "Penie!", price: 0.8, store_id: nil, actable_id: 1, actable_type: "Pen">]
 pen = Pen.new
