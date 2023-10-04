@@ -300,7 +300,7 @@ RSpec.describe "ActiveRecord::Base model with #acts_as called" do
     end
 
     context "errors" do
-      let(:error_message) { ActiveRecord.version >=  Gem::Version.new('7.1.0.alpha') ? "can’t be blank" : "can't be blank"}
+      let(:error_message) { "can't be blank" }
 
       context 'when validates_actable is set to true' do
         it "combines supermodel and submodel errors" do
