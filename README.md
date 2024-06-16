@@ -195,10 +195,6 @@ end
 ## Caveats
 
 Multiple `acts_as` in the same class are not supported!
-## Migrating from acts_as_relation
-
-Replace `acts_as_superclass` in models with `actable` and if you where using
-`:as_relation_superclass` option on `create_table` remove it and use `t.actable` on column definitions.
 ## RSpec custom matchers
 
 To use this library custom RSpec matchers, you must require the `rspec/acts_as_matchers` file.
