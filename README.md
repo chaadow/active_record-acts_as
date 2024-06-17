@@ -37,7 +37,7 @@ Or install it yourself as:
 
 Back to example above, all you have to do is to mark `Product` as `actable` and all product type models as `acts_as :product`:
 
-```Ruby
+```ruby
 class Product < ActiveRecord::Base
   actable
   belongs_to :store
@@ -67,7 +67,7 @@ end
 and add foreign key and type columns to products table as in a polymorphic relation.
 You may prefer using a migration:
 
-```Ruby
+```ruby
 change_table :products do |t|
   t.integer :actable_id
   t.string  :actable_type
@@ -76,7 +76,7 @@ end
 
 or use shortcut `actable`
 
-```Ruby
+```ruby
 change_table :products do |t|
   t.actable
 end
@@ -90,7 +90,7 @@ on parent table and they will be touched after submodel updates (You can use the
 Now `Pen` and `Book` **acts as** `Product`, i.e. they inherit `Product`s **attributes**,
 **methods** and **validations**. Now you can do things like these:
 
-```Ruby
+```ruby
 Pen.create name: 'Penie!', price: 0.8, color: 'red'
   # => #<Pen id: 1, color: "red">
 Pen.where price: 0.8
@@ -119,14 +119,14 @@ Pen.first.info
 
 On the other hand you can always access a specific object from its parent by calling `specific` method on it:
 
-```Ruby
+```ruby
 Product.first.specific
   # => #<Pen ...>
 ```
 
 If you have to come back to the parent object from the specific, the `acting_as` returns the parent element:
 
-```Ruby
+```ruby
 Pen.first.acting_as
   # => #<Product ...>
 ```
@@ -139,7 +139,7 @@ Pen.where(...).actables
 
 In `has_many` case you can use subclasses:
 
-```Ruby
+```ruby
 store = Store.create
 store.products << Pen.create
 store.products.first
@@ -148,7 +148,7 @@ store.products.first
 
 You can give a name to all methods in `:as` option:
 
-```Ruby
+```ruby
 class Product < ActiveRecord::Base
   actable as: :producible
 end
@@ -169,7 +169,7 @@ Make sure you know what you are doing when overwriting `validate` or `autosave` 
 
 You can pass scope to `acts_as` as in `has_one`:
 
-```Ruby
+```ruby
 acts_as :person, -> { includes(:friends) }
 ```
 
@@ -182,7 +182,7 @@ Make sure you know what you are doing when overwriting `polymorphic` option.
 
 If your `actable` and `acts_as` models are namespaced, you need to configure them like this:
 
-```Ruby
+```ruby
 class MyApp::Product < ApplicationRecord
   actable inverse_of: :product
 end
@@ -201,7 +201,7 @@ To use this library custom RSpec matchers, you must require the `rspec/acts_as_m
 
 Examples:
 
-```Ruby
+```ruby
 require "active_record/acts_as/matchers"
 
 RSpec.describe "Pen acts like a Product" do
