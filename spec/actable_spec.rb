@@ -49,7 +49,7 @@ RSpec.describe "ActiveRecord::Base subclass with #actable" do
 
   it "raises NoMethodError for undefined methods on specific" do
     pen.save
-    expect{ pen.product.raise_error }.to raise_error(NoMethodError, /undefined method `non_existant_method' for #<Pen/)
+    expect{ pen.product.raise_error }.to raise_error(NoMethodError, /undefined method `non_existant_method' for /)
   end
 
   it "deletes specific subclass on destroy" do

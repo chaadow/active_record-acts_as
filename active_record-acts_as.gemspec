@@ -1,36 +1,32 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# frozen_string_literal: true
 
-require 'active_record/acts_as/version'
+require_relative "lib/active_record/acts_as/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "active_record-acts_as"
   spec.version       = ActiveRecord::ActsAs::VERSION
   spec.authors       = ["Hassan Zamani", "Manuel Meurer", "Chedli Bourguiba"]
-  spec.email         = ["hsn.zamani@gmail.com", "manuel@krautcomputing.com", "bourguiba.chedli@gmail.com"]
+  spec.email         = ["bourguiba.chedli@gmail.com"]
   spec.summary       = %q{Simulate multi-table inheritance for activerecord models}
   spec.description   = %q{Simulate multi-table inheritance for activerecord models using a polymorphic association}
   spec.homepage      = "http://github.com/chaadow/active_record-acts_as"
-  spec.metadata         = { "source_code_uri" => "http://github.com/chaadow/active_record-acts_as" }
+  spec.metadata         = {
+    "homepage_uri"    => "http://github.com/chaadow/active_record-acts_as",
+    "source_code_uri" => "http://github.com/chaadow/active_record-acts_as",
+    "changelog_uri"   => "http://github.com/chaadow/active_record-acts_as/blob/master/CHANGELOG.md",
+    "bug_tracker_uri" => "http://github.com/chaadow/active_record-acts_as/issues"
+  }
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  spec.files         = Dir["README.md", "MIT-LICENSE", "lib/**/*.rb"]
 
-  spec.required_ruby_version = ">= 2.5"
+  spec.required_ruby_version = ">= 3.1"
 
-  spec.add_development_dependency "sqlite3"
-  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rspec", "~> 3"
-  spec.add_development_dependency "psych", "3.3.2"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "appraisal", "~> 2.1"
+  spec.add_development_dependency "appraisal"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
 
   spec.add_dependency "activesupport", ">= 6.0"
   spec.add_dependency "activerecord", ">= 6.0"
-  spec.add_dependency "ruby2_keywords"
 
 end
